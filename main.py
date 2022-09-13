@@ -1,10 +1,10 @@
 from tkinter import *
 from tkinterdnd2 import *
 from list import *
+from PIL import ImageTk, Image
 
-def path_listbox(event):
-    print(event.data)
-    make_list(event.data)
+
+
     
 
 window = TkinterDnD.Tk()
@@ -22,10 +22,28 @@ listbox = Listbox(
     width=50,
     height=10,
     selectmode=SINGLE,
-    background='grey',
     )
 listbox.pack(fill=X, side=LEFT)
 
+
+
+
+
+frame1 = Frame(master=window, width=100, height=100, pady=10, bg='#0D1117')
+frame1.pack()
+
+
+def set_list(dict):
+    for widget in frame1.winfo_children():
+        widget.destroy()
+    for key, value in dict.items():
+        labell = Label(frame1, text=(key + " : " + str(round(value, 2)) + "%"), pady=1, bg='#0D1117', fg='#FFFFFF')
+        labell.pack()
+
+
+def path_listbox(event):
+    print(event.data)
+    set_list(make_list(event.data))
 
 
 listbox.drop_target_register(DND_FILES)
