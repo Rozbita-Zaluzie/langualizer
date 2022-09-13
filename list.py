@@ -2,7 +2,7 @@ import os
 
 def make_list(path):  
 
-    ext = open("extentions.csv", "r").read().split(",")
+    ext = open("files/extentions.csv", "r").read().split(",")
 
 
 
